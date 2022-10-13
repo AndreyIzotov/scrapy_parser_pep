@@ -4,6 +4,8 @@ import scrapy
 from pep_parse.constants import NEXT_SIBLING, NUMBER_NAME, STATUS_XPATH
 from pep_parse.items import PepParseItem
 
+# from urllib.parse import urljoin
+
 
 class PepSpider(scrapy.Spider):
     name = 'pep'
@@ -26,4 +28,4 @@ class PepSpider(scrapy.Spider):
         pep_links = pep_list.css(
             'a[class="pep reference internal"]::attr(href)').getall()
         for pep_link in pep_links:
-            yield response.follow(f'{pep_link}/', callback=self.parse_pep)
+            yield response.follow(pep_link, callback=self.parse_pep)

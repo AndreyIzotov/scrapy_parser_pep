@@ -7,7 +7,7 @@ from .constants import BASE_DIR, DATETIME_FORMAT, FILENAME
 
 class PepParsePipeline:
     def __init__(self):
-        self.result_dir = BASE_DIR / 'results'
+        self.result_dir = BASE_DIR
         self.result_dir.mkdir(exist_ok=True)
 
     def open_spider(self, spider):
